@@ -244,13 +244,14 @@ TransmissionRemote.prototype =
 	verifyTorrents: function( torrent_ids, callback ) {
 		this.sendTorrentActionRequests( 'torrent-verify', torrent_ids, callback );
 	},
-	addTorrentByUrl: function( url, options ) {
+	addTorrentByUrl: function( url, cookie_string, options ) {
 		var remote = this;
 		var o = {
 			method: 'torrent-add',
 			arguments: {
 				paused: (options.paused),
-				filename: url
+				filename: url,
+				cookies: cookie_string
 			}
 		};
 		this.sendRequest(o, function() {

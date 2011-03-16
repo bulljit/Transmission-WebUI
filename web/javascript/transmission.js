@@ -1842,6 +1842,7 @@ Transmission.prototype =
 		if (! confirmed) {
 				$('input#torrent_upload_file').attr('value', '');
 				$('input#torrent_upload_url').attr('value', '');
+				$('input#torrent_upload_cookie').attr('value', '');
 				$('input#torrent_auto_start').attr('checked', $('#prefs_form #auto_start')[0].checked);
 				$('#upload_container').show();
                 $('#torrent_upload_url').focus();
@@ -1855,7 +1856,7 @@ Transmission.prototype =
 			var args = { };
 			var paused = !$('#torrent_auto_start').is(':checked');
 			if ('' != $('#torrent_upload_url').val()) {
-				tr.remote.addTorrentByUrl($('#torrent_upload_url').val(), { paused: paused });
+				tr.remote.addTorrentByUrl($('#torrent_upload_url').val(), $('#torrent_upload_cookie').val(), { paused: paused });
 			} else {
 				args.url = '../upload?paused=' + paused;
 				args.type = 'POST';
