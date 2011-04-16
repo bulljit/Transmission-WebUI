@@ -470,7 +470,8 @@ Transmission.prototype =
 
 	selectElement: function( e, doUpdate ) {
 		e.addClass('selected');
-		this.scrollToElement( e );
+		// this.scrollToElement( e );
+		// above removed to fix Web UI flickering to selection https://trac.transmissionbt.com/ticket/3820
 		if( doUpdate )
 			this.selectionChanged( );
 	},
